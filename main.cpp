@@ -54,9 +54,29 @@ void field_update() {
 
 int main()
 {
-	while (true) {
+    field_update();
+	bool X_or_O{true}; //false means X
+	int j{};
+	int i{};
 
-		field_update();
-	}
+while(true){
+		if(X_or_O == true){
+			std::cout << "O player's turn. Choose position(row, collumn):\n";
+			std::cin >> i;
+			std::cin >> j;
+			field[i][j] = 1;
+			X_or_O = false; 
+			field_update();
+		}
+		if(X_or_O != true){
+			std::cout << "X player's turn. Choose position(row, collumn):\n";
+			std::cin >> i;
+			std::cin >> j;
+			field[i][j] = 2;
+			X_or_O = true;  
+			field_update();
+		}   
+}
+
 return 0;
 }
