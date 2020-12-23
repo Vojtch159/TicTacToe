@@ -3,9 +3,14 @@
 
 void Clear()
 {
-	system("cls");
-} 
-// clears the terminal for windows
+#if defined _WIN32
+    system("cls");
+#elif defined (__LINUX__) || defined(__gnu_linux__) || defined(__linux__)
+    system("clear");
+#elif defined (__APPLE__)
+    system("clear");
+#endif
+}
 
 std::vector<std::vector<int>> field
 	{
