@@ -3,13 +3,7 @@
 
 void Clear()
 {
-#if defined _WIN32
-    system("cls");
-#elif defined (__LINUX__) || defined(__gnu_linux__) || defined(__linux__)
     system("clear");
-#elif defined (__APPLE__)
-    system("clear");
-#endif
 }
 
 std::vector<std::vector<int>> field
@@ -52,31 +46,24 @@ void field_update() {
 	new_line();
 }
 
-int main()
-{
-    field_update();
-	bool X_or_O{true}; //false means X
-	int j{};
+int main(){
+	bool O_or_X {true}; //true is O's turn
+	int k{};
 	int i{};
-
-while(true){
-		if(X_or_O == true){
-			std::cout << "O player's turn. Choose position(row, collumn):\n";
-			std::cin >> i;
-			std::cin >> j;
-			field[i][j] = 1;
-			X_or_O = false; 
-			field_update();
+	while(true){
+		field_update();
+		if (O_or_X == true) {
+			std::cout << "It's O's player turn. What position do you want ? (row, collumn)";
+			std::cin >> k, i;
+			field[k][i] = 1;
 		}
-		if(X_or_O != true){
-			std::cout << "X player's turn. Choose position(row, collumn):\n";
-			std::cin >> i;
-			std::cin >> j;
-			field[i][j] = 2;
-			X_or_O = true;  
-			field_update();
-		}   
-}
-
+		if(O_or_X != true){
+			std::cout << "It's X's player turn. What position do you want ? (row, collumn)";
+			std::cin >> k, i;
+			field[k][i] = 2;
+		}
+		O_or_X = !O_or_X;
+	}
+cin.get()
 return 0;
-}
+}   
