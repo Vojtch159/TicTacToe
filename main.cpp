@@ -54,11 +54,13 @@ int main(){
 		field_update();
 		if (O_or_X == true) {
 			std::cout << "It's O's player turn. What position do you want ? (row, collumn)";
+			std::cin.ignore();
 			std::cin >> k, i;
 			field[k][i] = 1;
 		}
 		if(O_or_X != true){
 			std::cout << "It's X's player turn. What position do you want ? (row, collumn)";
+			std::cin.ignore();
 			std::cin >> k, i;
 			field[k][i] = 2;
 		}
