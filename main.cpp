@@ -48,21 +48,23 @@ void field_update() {
 
 int main(){
 	bool O_or_X {true}; //true is O's turn
-	int k{};
-	int i{};
+	int a{};
+	int b{};
+	field_update();
 	while(true){
-		field_update();
 		if (O_or_X == true) {
-			std::cout << "It's O's player turn. What position do you want ? (row, collumn)";
+			std::cout << "It's O's player turn. What position do you want ? (row collumn)";
 			std::cin.ignore();
-			std::cin >> k, i;
-			field[k][i] = 1;
+			std::cin >> a, b;
+			field[a][b] = 1;
+			field_update();
 		}
 		if(O_or_X != true){
-			std::cout << "It's X's player turn. What position do you want ? (row, collumn)";
+			std::cout << "It's X's player turn. What position do you want ? (row collumn)";
 			std::cin.ignore();
-			std::cin >> k, i;
-			field[k][i] = 2;
+			std::cin >> a, b;
+			field[a][b] = 2;
+			field_update();
 		}
 		O_or_X = !O_or_X;
 	}
