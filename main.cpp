@@ -64,6 +64,5 @@ int main(){
 		}
 		O_or_X = !O_or_X;
 	}
-cin.get()
 return 0;
 }   
