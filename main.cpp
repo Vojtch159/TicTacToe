@@ -67,9 +67,24 @@ bool check_lines_columns(){
 }
 
 bool check_diagonals(){
- return false;
+	int i{2};
+	int j{2};
+	if (field[i][j] == field[i-1][j-1] && field[i][j] != 0){ 
+		if (field[i][j] == field[i-2][j-2]){
+			return true;
+		}
+	}
+	
+	i = 0;
+	j = 2;
+	if (field[i][j] == field[i+1][j-1] && field[i][j] != 0){ 
+		if (field[i][j] == field[i+2][j-2]){
+			return true;
+		}
+	}
+
+	return false;
 }
-//check_diagonals fnc is not done yet
 
 
 bool is_over(){
