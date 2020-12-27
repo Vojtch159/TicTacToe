@@ -54,19 +54,19 @@ int main(){
 	while(true){
 		if (O_or_X == true) {
 			std::cout << "It's O's player turn. What position do you want ? (row collumn)";
-			std::cin.ignore();
-			std::cin >> a, b;
-			field[a][b] = 1;
-			field_update();
+			//std::cin.ignore(); ukazuje se ze tohle je asi k hovnu
+			std::cin >> a, b; 
+			field[a][b] = 1; 
+			field_update(); 
 		}
 		if(O_or_X != true){
 			std::cout << "It's X's player turn. What position do you want ? (row collumn)";
-			std::cin.ignore();
+			//std::cin.ignore();
 			std::cin >> a, b;
 			field[a][b] = 2;
-			field_update();
+			field_update(); 
 		}
-		O_or_X = !O_or_X;
+		O_or_X = !O_or_X; 
 	}
 return 0;
 }   
