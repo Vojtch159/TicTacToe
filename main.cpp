@@ -54,7 +54,6 @@ int main(){
 	while(true){
 		if (O_or_X == true) {
 			std::cout << "It's O's player turn. What position do you want ? (row collumn)";
-			//std::cin.ignore(); ukazuje se ze tohle je asi k hovnu
 			std::cin >> a; 
 			std::cin >> b;
 			field[a][b] = 1; 
@@ -62,9 +61,8 @@ int main(){
 		}
 		if(O_or_X != true){
 			std::cout << "It's X's player turn. What position do you want ? (row collumn)";
-			//std::cin.ignore();
 			std::cin >> a; 
-			std::cin >> b; //PROC KURVA ???
+			std::cin >> b;
 			field[a][b] = 2;
 			field_update(); 
 		}
