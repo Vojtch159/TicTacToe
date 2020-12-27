@@ -64,7 +64,7 @@ int main(){
 			std::cout << "It's X's player turn. What position do you want ? (row collumn)";
 			//std::cin.ignore();
 			std::cin >> a; 
-			std::cin >> b;
+			std::cin >> b; //PROC KURVA ???
 			field[a][b] = 2;
 			field_update(); 
 		}
