@@ -24,12 +24,12 @@ void new_symbols(int k) {
 	int i{};
 	std::cout << " | ";
 	for (int j = i; j < i + 3; j++) {
-		if (field[k][j] == 0)
-			std::cout << ' ';
 		if (field[k][j] == 1)
 			std::cout << 'O';
 		if (field[k][j] == 2)
 			std::cout << 'X';
+		if (field[k][j] == 0)
+			std::cout << ' ';
 		std::cout << " | ";
 	}
 	std::cout << '\n';
@@ -46,7 +46,36 @@ void field_update() {
 	new_line();
 }
 
+bool check_lines_columns(){
+	int i{};
+	int j{};
+		for(j = 0 ; i < 3; i++){
+			if (field[i][j] == field[i][j+1] && field[i][j] != 0){ //for lines
+				if (field[i][j] == field[i][j+2]){
+					return true;
+				}
+			}
+		}
+		for(i = 0 ; j < 3; j++){
+			if (field[i][j] == field[i+1][j] && field[i][j] != 0){ //for lines
+				if (field[i][j] == field[i+2][j]){
+					return true;
+				}
+			}
+		}
+	return false;
+}
+
+bool check_diagonals(){
+ return false;
+}
+//check_diagonals fnc is not done yet
+
+
 bool is_over(){
+	if(check_lines_columns() || check_diagonals() == true){
+		return true;
+	}
 	return false;
 }
 
@@ -72,10 +101,11 @@ int main(){
 			field_update(); 
 		}
 		O_or_X = !O_or_X; 
-		if(is_over() == true)
+		if(is_over() == true){
 			break;
+		}
 	}
-std::cout << "Game over\n";	
-return 0;
+	std::cout << "Game over\n";	
+	return 0;
 }   
 
