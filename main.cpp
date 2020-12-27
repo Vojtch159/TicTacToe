@@ -46,6 +46,11 @@ void field_update() {
 	new_line();
 }
 
+bool is_over(){
+	return false;
+}
+
+
 int main(){
 	bool O_or_X {true}; //true is O's turn
 	int a{};
@@ -67,7 +72,10 @@ int main(){
 			field_update(); 
 		}
 		O_or_X = !O_or_X; 
+		if(is_over() == true)
+			break;
 	}
+std::cout << "Game over\n";	
 return 0;
 }   
 
