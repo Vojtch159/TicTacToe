@@ -16,14 +16,13 @@ inline void change_player(bool &a){
 
 void new_line() {
 	std::cout << ' ';
-	for (int i{}; i < (size_of_field*4)+1; i++)
+	for (int i{}; i < (size_of_field*4)+1; i++){
 		std::cout << '-';
+	}
 	std::cout << '\n';
 }
-//in progress
-
-void new_symbols() {
-	static int i{};//collumn counter
+//done, needs test
+void new_symbols(int i) {
 	std::cout << " | ";
 	for (int j{}; j == size_of_field; j++) {
 		if (field[i][j] == 1)
@@ -35,21 +34,19 @@ void new_symbols() {
 		std::cout << " | ";
 	}
 	std::cout << '\n';
-	i++;
-	if(i == size_of_field){
-		i = 0;
-	}
 }
-//in progress
+//done, needs test
 
 void field_update() {
 	Clear();
-	for(int i = size_of_field; i == 1; i--){
+	int j{};
+	for(int i = size_of_field; i < 1; i--){
 		new_line();
-		new_symbols();
+		new_symbols(j);
+		j++;
 	}
 }
-//in progress
+//done, needs test
 
 void declare_field(){
 	std::cout << "How large playing field do you want ? : ";
@@ -58,6 +55,7 @@ void declare_field(){
 		std::cout << "too small field, please choose playing field bigger than 2: ";
 		std::cin >> size_of_field;
 	}
+	field.clear();
 	field.resize(size_of_field, std::vector<int>(size_of_field));
 	field_update();
 }
