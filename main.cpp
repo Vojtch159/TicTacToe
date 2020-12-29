@@ -42,7 +42,7 @@ void field_update() {
 		new_symbols();
 	}
 }
-//done
+//in progress
 bool check_lines_columns(){
 	int i{};
 	int j{};
