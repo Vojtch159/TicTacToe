@@ -5,9 +5,9 @@ int size_of_field;
 
 void Clear()
 {
-    system("clear");
+  system("clear");
 }
-//done
+//done, works only linux
 
 inline void change_player(bool &a){
 	a = !a; 
@@ -46,7 +46,7 @@ void field_update() {
 		j++;
 	}
 }
-//done, needs test
+//done, idk why this doesnt work so ill kill my self propably. It's fucking borken piece of shit
 
 void declare_field(){
 	std::cout << "How large playing field do you want ? : ";
@@ -59,7 +59,7 @@ void declare_field(){
 	field.resize(size_of_field, std::vector<int>(size_of_field));
 	field_update();
 }
-//done, needs test
+//done
 
 bool check_lines_columns(){
 	int i{};
