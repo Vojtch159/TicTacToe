@@ -1,25 +1,21 @@
 #include <iostream>
 #include <vector>
 
+std::vector<std::vector<int>> field;
+int size_of_field{};
+
 void Clear()
 {
     system("clear");
 }
-
-std::vector<std::vector<int>> field
-	{
-		{0, 0, 0},
-		{0, 0, 0},
-		{0, 0, 0}
-	}; // field [rows][collumns]
-
+//done
 void new_line() {
 	std::cout << ' ';
 	for (int i{}; i < 13; i++)
 		std::cout << '-';
 	std::cout << '\n';
 }
-
+//in progress
 void new_symbols(int k) {
 	int i{};
 	std::cout << " | ";
@@ -34,18 +30,16 @@ void new_symbols(int k) {
 	}
 	std::cout << '\n';
 }
-
-void field_update() {
+//in progress
+void field_update(int size_of_field) {
 	Clear();
-	new_line();
-	new_symbols(0);
-	new_line();
-	new_symbols(1);
-	new_line();
-	new_symbols(2);
-	new_line();
-}
+	for(int i; i == 1; i--){
 
+	}
+	new_line();
+	new_symbols(5);
+}
+//in progress
 bool check_lines_columns(){
 	int i{};
 	int j{};
@@ -65,7 +59,7 @@ bool check_lines_columns(){
 		}
 	return false;
 }
-
+//in progress
 bool check_diagonals(){
 	int i{2};
 	int j{2};
@@ -85,37 +79,64 @@ bool check_diagonals(){
 
 	return false;
 }
-
-
+//in progress
 bool is_over(){
 	if(check_lines_columns() || check_diagonals() == true){
 		return true;
 	}
 	return false;
 }
-
+//in progress
+inline void change_player(bool &a){
+	a = !a; 
+}
+//done
+void declare_field(){
+	std::cout << "How large playing field do you want ? : ";
+	std::cin >> size_of_field;
+	while(size_of_field < 3){
+		std::cout << "too small field, please choose playing field bigger than 2: ";
+		std::cin >> size_of_field;
+	}
+	field.resize(size_of_field, std::vector<int>(size_of_field));
+	field_update(size_of_field);
+}
+//done
 
 int main(){
 	bool O_or_X {true}; //true is O's turn
-	int a{};
-	int b{};
-	field_update();
+	declare_field();
+
 	while(true){
 		if (O_or_X == true) {
 			std::cout << "It's O's player turn. What position do you want ? (row collumn)";
+			int a{};
+			int b{};
 			std::cin >> a; 
 			std::cin >> b;
+			while(a > size_of_field || b > size_of_field || a < 0 || b < 0){
+				std::cout << "invalid row or collumn, please enter again: ";
+				std::cin >> a; 
+				std::cin >> b;
+			}
 			field[a][b] = 1; 
-			field_update(); 
+			field_update(size_of_field); 
 		}
 		if(O_or_X != true){
 			std::cout << "It's X's player turn. What position do you want ? (row collumn)";
+			int a{};
+			int b{};
 			std::cin >> a; 
 			std::cin >> b;
+			while(a > size_of_field || b > size_of_field || a < 0 || b < 0){
+				std::cout << "invalid row or collumn, please enter again: ";
+				std::cin >> a; 
+				std::cin >> b;
+			}
 			field[a][b] = 2;
-			field_update(); 
+			field_update(size_of_field); 
 		}
-		O_or_X = !O_or_X; 
+		change_player(O_or_X);
 		if(is_over() == true){
 			break;
 		}
@@ -123,4 +144,4 @@ int main(){
 	std::cout << "Game over\n";	
 	return 0;
 }   
-
+//done
