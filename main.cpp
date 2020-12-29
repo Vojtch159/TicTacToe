@@ -11,35 +11,38 @@ void Clear()
 //done
 void new_line() {
 	std::cout << ' ';
-	for (int i{}; i < 13; i++)
+	for (int i{}; i < (size_of_field*4)+1; i++)
 		std::cout << '-';
 	std::cout << '\n';
 }
-//in progress
-void new_symbols(int k) {
-	int i{};
+//done
+void new_symbols() {
+	static int i{};//collumn counter
 	std::cout << " | ";
-	for (int j = i; j < i + 3; j++) {
-		if (field[k][j] == 1)
+	for (int j{}; j == size_of_field; j++) {
+		if (field[i][j] == 1)
 			std::cout << 'O';
-		if (field[k][j] == 2)
+		if (field[i][j] == 2)
 			std::cout << 'X';
-		if (field[k][j] == 0)
+		if (field[i][j] == 0)
 			std::cout << ' ';
 		std::cout << " | ";
 	}
 	std::cout << '\n';
-}
-//in progress
-void field_update(int size_of_field) {
-	Clear();
-	for(int i; i == 1; i--){
-
+	i++;
+	if(i == size_of_field){
+		i = 0;
 	}
-	new_line();
-	new_symbols(5);
 }
 //in progress
+void field_update() {
+	Clear();
+	for(int i = size_of_field; i == 1; i--){
+		new_line();
+		new_symbols();
+	}
+}
+//done
 bool check_lines_columns(){
 	int i{};
 	int j{};
@@ -81,12 +84,12 @@ bool check_diagonals(){
 }
 //in progress
 bool is_over(){
-	if(check_lines_columns() || check_diagonals() == true){
-		return true;
-	}
+//	if(check_lines_columns() || check_diagonals() == true){
+//		return true;
+	//}
 	return false;
 }
-//done
+//in progress
 inline void change_player(bool &a){
 	a = !a; 
 }
@@ -99,7 +102,7 @@ void declare_field(){
 		std::cin >> size_of_field;
 	}
 	field.resize(size_of_field, std::vector<int>(size_of_field));
-	field_update(size_of_field);
+	field_update();
 }
 //done
 
@@ -120,7 +123,7 @@ int main(){
 				std::cin >> b;
 			}
 			field[a][b] = 1; 
-			field_update(size_of_field); 
+			field_update(); 
 		}
 		if(O_or_X != true){
 			std::cout << "It's X's player turn. What position do you want ? (row collumn)";
@@ -134,7 +137,7 @@ int main(){
 				std::cin >> b;
 			}
 			field[a][b] = 2;
-			field_update(size_of_field); 
+			field_update(); 
 		}
 		change_player(O_or_X);
 		if(is_over() == true){
