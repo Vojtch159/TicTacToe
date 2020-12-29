@@ -86,7 +86,7 @@ bool is_over(){
 	}
 	return false;
 }
-//in progress
+//done
 inline void change_player(bool &a){
 	a = !a; 
 }
